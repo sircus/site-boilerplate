@@ -59,16 +59,20 @@ gulp
 - Handlebars for Gulp  [API, Options](https://github.com/shannonmoeller/gulp-hb)
 - handlebars Registrar [API, Options](https://github.com/shannonmoeller/handlebars-registrar)
 - Handlebars Layouts [API, Helpers](https://github.com/shannonmoeller/handlebars-layouts)
-- Handlebar Helpers [is comparisons](https://github.com/danharper/Handlebars-Helpers)
+
+### Handlebars helpers
+
+- Handlebars [is comparisons](https://github.com/danharper/Handlebars-Helpers) by [danharper](https://github.com/danharper/)
 
 ### Markdown by [Helper team](https://github.com/helpers)
 
 - Markdown [basic, syntax](http://daringfireball.net/projects/markdown/)
 - Markdown Helper uses [CommonMark](https://github.com/jgm/CommonMark)
 
-### stylestats by [1000ch](https://github.com/1000ch)
+### stylestats by [t32k](https://github.com/t32k/)
 
-- [Stylestyle](http://www.stylestats.org/) for gulp [Usage](https://github.com/1000ch/gulp-stylestats)
+- Stylestyle [Usage](https://github.com/t32k/stylestats)
+- [Gulp module](https://github.com/1000ch/gulp-stylestats) by [1000ch](https://github.com/1000ch)
 
 ### Dependencies
 
