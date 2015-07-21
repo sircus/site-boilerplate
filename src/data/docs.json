@@ -1,0 +1,143 @@
+{
+  "published": "2015-07-21T00:53:52.359Z",
+  "paths": [],
+  "stylesheets": 0,
+  "styleElements": 0,
+  "size": 47581,
+  "dataUriSize": 19,
+  "ratioOfDataUriSize": 0.00039931905592568463,
+  "gzippedSize": 8115,
+  "rules": 642,
+  "selectors": 901,
+  "declarations": 958,
+  "simplicity": 0.7125416204217536,
+  "averageOfIdentifier": 1.3129855715871255,
+  "mostIdentifier": 3,
+  "mostIdentifierSelector": ".Button--reset.is-warning:hover",
+  "averageOfCohesion": 1.4937694704049844,
+  "lowestCohesion": 21,
+  "lowestCohesionSelector": [
+    "button",
+    ".Button"
+  ],
+  "totalUniqueFontSizes": 16,
+  "uniqueFontSizes": [
+    "0",
+    "inherit",
+    "1.2rem",
+    "1.6rem",
+    "2rem",
+    "2.4rem",
+    "3rem",
+    "3.6rem",
+    "12px",
+    "13px",
+    "18px",
+    "48px",
+    "54px",
+    "62.5%",
+    "64px",
+    "100%"
+  ],
+  "totalUniqueFontFamilies": 8,
+  "uniqueFontFamilies": [
+    "\"Helvetica Neue\", Helvetica, sans-serif",
+    "\"Osaka－等幅\", Osaka-mono, \"ＭＳ ゴシック\", \"MS Gothic\", monospace",
+    "\"Times New Roman\", \"游明朝\", YuMincho, \"ヒラギノ明朝 ProN W3\", \"Hiragino Mincho ProN\", \"メイリオ\", Meiryo, serif",
+    "'Roboto', sans-serif",
+    "Georgia, \"Times New Roman\", Times, serif",
+    "Menlo, Monaco, Consolas, \"Courier New\", monospace",
+    "Verdana, \"游ゴシック\", YuGothic, \"ヒラギノ角ゴ ProN W3\", \"Hiragino Kaku Gothic ProN\", \"メイリオ\", Meiryo, sans-serif",
+    "inherit"
+  ],
+  "totalUniqueColors": 38,
+  "uniqueColors": [
+    "#000000",
+    "#000080",
+    "#008080",
+    "#0086B3",
+    "#009926",
+    "#009999",
+    "#12916E",
+    "#18BE91",
+    "#222222",
+    "#333333",
+    "#445588",
+    "#4A545D",
+    "#4FACE4",
+    "#555555",
+    "#556B7F",
+    "#6C7B88",
+    "#777777",
+    "#7BC1EB",
+    "#800080",
+    "#888888",
+    "#990000",
+    "#990073",
+    "#999988",
+    "#999999",
+    "#A61717",
+    "#AA0000",
+    "#AAAAAA",
+    "#BBBBBB",
+    "#BEBEC5",
+    "#C8B119",
+    "#C8C8C8",
+    "#CBD5DF",
+    "#DD1144",
+    "#E5CD2F",
+    "#E62C22",
+    "#EB5850",
+    "#FFFFFF",
+    "RGBA(255, 255, 255, 0.5)"
+  ],
+  "idSelectors": 0,
+  "universalSelectors": 0,
+  "unqualifiedAttributeSelectors": 18,
+  "javascriptSpecificSelectors": 0,
+  "importantKeywords": 447,
+  "floatProperties": 4,
+  "propertiesCount": [
+    {
+      "property": "width",
+      "count": 180
+    },
+    {
+      "property": "color",
+      "count": 105
+    },
+    {
+      "property": "padding",
+      "count": 50
+    },
+    {
+      "property": "display",
+      "count": 47
+    },
+    {
+      "property": "background-color",
+      "count": 44
+    },
+    {
+      "property": "margin",
+      "count": 41
+    },
+    {
+      "property": "padding-bottom",
+      "count": 39
+    },
+    {
+      "property": "margin-bottom",
+      "count": 38
+    },
+    {
+      "property": "margin-top",
+      "count": 37
+    },
+    {
+      "property": "padding-top",
+      "count": 33
+    }
+  ],
+  "mediaQueries": 35
+}
