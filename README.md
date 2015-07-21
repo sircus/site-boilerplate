@@ -33,6 +33,7 @@ gulp
 
 ## Structure
 
+```
 /src
 ├── / static
 │   ├── / images
@@ -41,6 +42,7 @@ gulp
 │   └── / js
 ├── / data
 └── / partials
+```
 
 ## Usage
 

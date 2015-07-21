@@ -1,14 +1,14 @@
 'use strict';
 
-var gulp = require('gulp'),
-       rename = require("gulp-rename"),
-       stylestats = require('gulp-stylestats'),
-       browserSync = require('browser-sync'),
-       runSequence = require('run-sequence'),
-       pkg = require('./package.json'),
-       reload = browserSync.reload,
-       base = { base: './src/' },
-       autoprefixerBrowsers = ['last 2 version'];
+var pkg         = require('./package.json');
+var gulp        = require('gulp');
+var rename      = require("gulp-rename");
+var stylestats  = require('gulp-stylestats');
+var runSequence = require('run-sequence');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+var autoprefixerBrowsers = ['last 2 version'];
+var base = { base: './src/' };
 
 // ----------------------------------------------------------------
 
