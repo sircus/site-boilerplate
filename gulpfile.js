@@ -1,9 +1,9 @@
 'use strict';
 
-var pkg         = require('./package.json');
-var gulp        = require('gulp');
-var rename      = require("gulp-rename");
-var stylestats  = require('gulp-stylestats');
+var pkg = require('./package.json');
+var gulp = require('gulp');
+var rename = require("gulp-rename");
+var stylestats = require('gulp-stylestats');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -49,7 +49,7 @@ gulp.task('engine', function () {
 // ----------------------------------------------------------------
 
 gulp.task('stylestats', function () {
-	gulp.src('./src/static/css/docs.css')
+	gulp.src('./src/static/css/sircus.css')
 		.pipe(stylestats({
 			type: 'json',
 			outfile: true
