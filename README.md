@@ -63,7 +63,7 @@ build:
 
 ## Usage
 
-- To configure for your project
+- To configure for your project new
   - `pkg` from package.json
   - `site` from config.yml
 
@@ -81,8 +81,7 @@ example:
   - is ( A == B )
   - isnot ( A !== B)
 
-More comparisons [here](https://github.com/danharper/Handlebars-Helpers) but no npm registry. just copy. And more useful helpers [here](https://github.com/helpers) by Helper team.
-
+More comparisons [here](https://github.com/danharper/Handlebars-Helpers) but no npm registry. just copy. And more useful helpers [here](https://github.com/helpers) by Helper team. Some helpers need to check on compatible gulp.
 
 ## developments
 
