@@ -2,8 +2,8 @@
   "name": "sircus-web",
   "version": "0.0.1",
   "author": "ungki <ungki.h@gmail.com> (https://github.com/ungki/)",
-  "description": "Gulping Handlebars  and JSON.",
-  "homepage": "http://sircus.blivesta.com/",
+  "description": "Gulping Handlebars  and JSON for GitHub Pages.",
+  "homepage": "https://github.com/sircus/sircus-web",
   "keywords": [
     "sircus",
     "gulp",
@@ -11,24 +11,33 @@
     "static site generator"
   ],
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/sircus/sircus-web.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sircus/sircus-web.git"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-util": "^3.0.6",
-    "gulp-rename": "^1.2.2",
+    "gulp-header": "^1.2.2",
+    "gulp-hb": "^2.6.1",
     "gulp-data": "^1.2.0",
+    "gulp-rename": "^1.2.2",
     "gulp-front-matter": "^1.2.2",
     "gulp-stylestats": "^0.8.0",
-    "handlebars": "^3.0.3",
-    "handlebars-registrar": "^1.5.0",
+    "sircus": "^1.0.0-alpha.1",
     "handlebars-layouts": "^2.0.2",
     "helper-markdown": "^0.1.1",
-    "through2": "^2.0.0",
-    "require-glob": "^1.3.1",
     "browser-sync": "^2.2.1",
-    "run-sequence": "^1.0.2"
-  }
+    "run-sequence": "^1.0.2",
+    "js-yaml": "^3.3.1",
+    "del": "^1.2.0",
+    "gulp-cssnext": "^1.0.1",
+    "gulp-uglify": "^1.2.0",
+    "jshint-stylish": "^2.0.0",
+    "gulp-jshint": "^1.8.6",
+    "browserify":"^10.2.4",
+    "vinyl-source-stream":"1.1.0",
+    "gulp-imagemin":"^2.2.1",
+    "imagemin-pngquant":"^4.1.0"
+  },
+  "dependencies": {}
 }

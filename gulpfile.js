@@ -1,38 +1,57 @@
 'use strict';
 
-var pkg = require('./package.json');
 var gulp = require('gulp');
+var pkg = require('./package.json');
+var header = require('gulp-header');
 var rename = require("gulp-rename");
-var stylestats = require('gulp-stylestats');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var autoprefixerBrowsers = ['last 2 version'];
-var base = { base: './src/' };
+var root = {
+  src:'./src',
+  build:'./gh-pages'
+};
+
+var banner = [
+'/*!',
+' * <%= pkg.name %>',
+' * <%= pkg.description %>',
+' * Version <%= pkg.version %>',
+' * <%= pkg.homepage %>',
+' * Author : <%= pkg.author %>',
+' * License : <%= pkg.license %>',
+' */',
+''].join('\n');
 
 // ----------------------------------------------------------------
 
-gulp.task('engine', function () {
-	var data = require('gulp-data'),
-		fm = require('gulp-front-matter'),
-		hb = require('./lib/handlebars-engine.js');
+gulp.task('engine', function() {
+	var data = require('gulp-data');
+	var fm = require('gulp-front-matter');
+	var hb = require('gulp-hb');
+	var fs = require('fs');
+	var yaml = require('js-yaml');
+	var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 
 	function getJSON(file) {
 		try {
-			return require(file.path.replace('.html','md','.json'));
+			return require(file.path.replace('.html','.json'));
 		}
 		catch (e) {
 			return {};
 		}
 	}
 
-	return gulp.src('./src/**/*.html', base)
+	return gulp.src('./src/**/*.html')
 		.pipe(data(getJSON))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
-			debug: true,
-			data: './src/data/*.{js,json}',
-			helpers: './lib/handlebars-helpers.js',
+			debug: false,
+			data: {
+				pkg: pkg,
+				site: config
+			},
+			helpers: './src/helpers/handlebars-helpers.js',
 			partials: './src/partials/**.hbs'
 		}))
 		.pipe(rename(function(path){
@@ -43,48 +62,116 @@ gulp.task('engine', function () {
 				path.basename="index";
 				path.extname = ".html";
 		}))
-		.pipe(gulp.dest('./gh-pages/'));
+		.pipe(gulp.dest(root.build));
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('stylestats', function () {
-	gulp.src('./src/static/css/sircus.css')
+gulp.task('js', function() {
+	var stylish = require('jshint-stylish');
+	var uglify = require('gulp-uglify');
+	var jshint = require('gulp-jshint');
+
+	return gulp.src(root.src + '/static/js/app.js')
+		.pipe(header(banner, { pkg:pkg }))
+		.pipe(jshint())
+		.pipe(jshint.reporter(stylish))
+		.pipe(gulp.dest(root.build + '/js'))
+		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(header(banner, { pkg:pkg }))
+		.pipe(gulp.dest(root.build + '/js'));
+});
+
+gulp.task('browserify', function() {
+	var browserify = require('browserify');
+	var source = require('vinyl-source-stream');
+
+	return browserify(root.src + '/static/js/app.js', { debug: true })
+		.bundle()
+		.on("error", function (err) {
+			console.log("Error : " + err.message);
+			this.emit('end');
+		})
+		.pipe(source('bundle.js'))
+		.pipe(gulp.dest(root.build + '/js'));
+});
+
+// ----------------------------------------------------------------
+
+gulp.task('sircus', function() {
+	return gulp.src('./node_modules/sircus/dist/sircus.min.css')
+		.pipe(gulp.dest(root.build + '/css'));
+});
+
+gulp.task('css', function() {
+	var cssnext = require("gulp-cssnext");
+
+	return gulp.src(root.src + '/static/css/main.css')
+		.pipe(header(banner, {pkg:pkg}))
+		.pipe(cssnext({
+			compress: true
+		}))
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(gulp.dest(root.build + '/css'));
+});
+
+gulp.task('stylestats', function() {
+	var stylestats = require('gulp-stylestats');
+
+	return gulp.src('./node_modules/sircus/dist/sircus.css')
 		.pipe(stylestats({
 			type: 'json',
 			outfile: true
 		}))
-		.pipe(gulp.dest('./src/data'));
+		.pipe(gulp.dest(root.src + '/data'));
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('files', function() {
-  return gulp.src('./src/static/**/*.*')
-	 .pipe(gulp.dest('./gh-pages/static'));
-});
+gulp.task('images', function() {
+	var imagemin = require('gulp-imagemin');
+	var pngquant = require('imagemin-pngquant');
 
-gulp.task('data', function() {
-  return gulp.src('./src/data/**/*')
-	  .pipe(gulp.dest('./gh-pages/data'));
+	return gulp.src(root.src + '/static/images/**/*')
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		}))
+		.pipe(gulp.dest(root.build + '/images'));
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('browsersync', function() {
-		browserSync.init({
-				server: {
-						baseDir: "./gh-pages/"
-				}
-		});
+	browserSync.init({
+		server: {
+			baseDir: "./gh-pages"
+		}
+	});
+});
+
+// ----------------------------------------------------------------
+
+gulp.task('cleanup', function(){
+	var del = require('del');
+
+	return del([ root.build ]);
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('build', function() {
-  runSequence(
-    'stylestats', 'engine', 'files', 'data', 'default'
-  );
+	runSequence(
+		'cleanup',
+		['js','css','sircus'],
+		'browserify',
+		'stylestats',
+		'engine',
+		'images',
+		'default'
+	);
 });
 
 gulp.task('default', ['watch']);
