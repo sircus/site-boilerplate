@@ -55,11 +55,11 @@ gulp.task('engine', function() {
 			partials: './src/partials/**.hbs'
 		}))
 		.pipe(rename(function(path){
-				if (path.basename=='index'){
+				if (path.basename == 'index'){
 						return;
 				}
-				path.dirname=path.basename.split('-').join('-');
-				path.basename="index";
+				path.dirname  = (path.dirname ? path.dirname + "/" : "") + path.basename;
+				path.basename = "index";
 				path.extname = ".html";
 		}))
 		.pipe(gulp.dest(root.build));
