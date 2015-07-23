@@ -73,11 +73,11 @@ example:
 {{site.title}}
 ```
 
-- Static files using common naming
+- Static files using common name
   - CSS: main.css
   - JS: app.js
 
-- Prepared comparisons helpers
+- Prepared comparison helpers
   - is (A == B)
   - isnot (A !== B)
 
