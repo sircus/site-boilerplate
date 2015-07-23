@@ -78,10 +78,10 @@ example:
   - JS: app.js
 
 - Prepared comparisons helpers
-  - is ( A == B )
-  - isnot ( A !== B)
+  - is (A == B)
+  - isnot (A !== B)
 
-More comparisons [here](https://github.com/danharper/Handlebars-Helpers) but no npm registry. just copy. And more useful helpers [here](https://github.com/helpers) by Helper team. Some helpers need to check on compatible gulp.
+More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
 
 ## developments
 
