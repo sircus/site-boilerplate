@@ -67,27 +67,19 @@ gulp.task('engine', function() {
 });
 
 // ----------------------------------------------------------------
+var stylish = require('jshint-stylish');
+var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
-gulp.task('js', function() {
-	var stylish = require('jshint-stylish');
-	var uglify = require('gulp-uglify');
-	var jshint = require('gulp-jshint');
-
-	return gulp.src(root.src + '/static/js/app.js')
-		.pipe(header(banner, { pkg:pkg }))
-		.pipe(jshint())
-		.pipe(jshint.reporter(stylish))
-		.pipe(gulp.dest(root.build + '/js'))
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(header(banner, { pkg:pkg }))
-		.pipe(gulp.dest(root.build + '/js'));
+gulp.task('jshint', function() {
+  return gulp.src(root.src + '/**/*.js')
+  .pipe(jshint())
+  .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('browserify', function() {
-	var browserify = require('browserify');
-	var source = require('vinyl-source-stream');
-
+gulp.task('javascript', function() {
 	return browserify(root.src + '/static/js/app.js', { debug: true })
 		.bundle()
 		.on("error", function (err) {
@@ -95,6 +87,13 @@ gulp.task('browserify', function() {
 			this.emit('end');
 		})
 		.pipe(source('bundle.js'))
+		.pipe(gulp.dest(root.build + '/js'));
+});
+
+gulp.task('jsmin', function() {
+	return gulp.src(root.build + '/js/bundle.js')
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest(root.build + '/js'));
 });
 
@@ -106,7 +105,7 @@ gulp.task('css', function() {
 	return gulp.src(root.src + '/static/css/main.css')
 		.pipe(header(banner, {pkg:pkg}))
 		.pipe(cssnext({
-			compress: false
+			compress: true
 		}))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(root.build + '/css'));
@@ -164,8 +163,8 @@ gulp.task('cleanup', function(){
 gulp.task('build', function() {
 	runSequence(
     'cleanup',
-    ['js','browserify'],
-    ['css','stylestats'],
+    'jshint','javascript','jsmin',
+    'css','stylestats',
     'engine',
     'images',
     'default'

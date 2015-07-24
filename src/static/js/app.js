@@ -1,1 +1,2 @@
-var sircus = "good!";
+var foo = require('./foo');
+foo();
