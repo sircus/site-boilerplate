@@ -38,6 +38,7 @@
     "vinyl-source-stream":"1.1.0",
     "gulp-imagemin":"^2.2.1",
     "imagemin-pngquant":"^4.1.0",
+    "gulp-sourcemaps": "^1.5.2",
     "jquery":"*"
   },
   "dependencies": {}

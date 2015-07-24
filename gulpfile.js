@@ -24,14 +24,14 @@ var banner = [
 ''].join('\n');
 
 // ----------------------------------------------------------------
+var fm = require('gulp-front-matter');
+var data = require('gulp-data');
+var fs = require('fs');
+var yaml = require('js-yaml');
+var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 
 gulp.task('engine', function() {
-	var data = require('gulp-data');
-	var fm = require('gulp-front-matter');
-	var hb = require('gulp-hb');
-	var fs = require('fs');
-	var yaml = require('js-yaml');
-	var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
+  var hb = require('gulp-hb');
 
 	function getJSON(file) {
 		try {
@@ -98,13 +98,23 @@ gulp.task('jsmin', function() {
 });
 
 // ----------------------------------------------------------------
+var cssnext = require("gulp-cssnext");
+var sourcemaps   = require('gulp-sourcemaps');
+var stylestats = require('gulp-stylestats');
 
 gulp.task('css', function() {
-	var cssnext = require("gulp-cssnext");
-
 	return gulp.src(root.src + '/static/css/main.css')
 		.pipe(header(banner, {pkg:pkg}))
-		.pipe(cssnext({
+		.pipe(cssnext())
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(root.build + '/css'));
+});
+
+gulp.task('cssmin', function() {
+  	return gulp.src(root.src + '/static/css/main.css')
+    .pipe(header(banner, {pkg:pkg}))
+    .pipe(cssnext({
 			compress: true
 		}))
 		.pipe(rename({ suffix: '.min' }))
@@ -112,8 +122,6 @@ gulp.task('css', function() {
 });
 
 gulp.task('stylestats', function() {
-	var stylestats = require('gulp-stylestats');
-
 	return gulp.src('./node_modules/sircus/dist/sircus.css')
 		.pipe(stylestats({
 			type: 'json',
@@ -123,11 +131,10 @@ gulp.task('stylestats', function() {
 });
 
 // ----------------------------------------------------------------
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 gulp.task('images', function() {
-	var imagemin = require('gulp-imagemin');
-	var pngquant = require('imagemin-pngquant');
-
 	return gulp.src(root.src + '/static/images/**/*')
 		.pipe(imagemin({
 			progressive: true,
@@ -151,10 +158,9 @@ gulp.task('browsersync', function() {
 });
 
 // ----------------------------------------------------------------
+var del = require('del');
 
 gulp.task('cleanup', function(){
-	var del = require('del');
-
 	return del([ root.build ]);
 });
 
@@ -164,7 +170,7 @@ gulp.task('build', function() {
 	runSequence(
     'cleanup',
     'jshint','javascript','jsmin',
-    'css','stylestats',
+    'css','cssmin','stylestats',
     'engine',
     'images',
     'default'
