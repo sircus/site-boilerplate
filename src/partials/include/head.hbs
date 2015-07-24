@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  {{#is file.meta.layout "home"}}
+  <meta name="description" content="{{site.description}}">
+  <title>{{site.title}}</title>
+  {{else}}
+  <meta name="description" content="{{ file.meta.description }}">
+  <title>{{file.meta.title}} - {{site.title}}</title>
+  {{/is}}
+
+    <!-- Icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//blivesta.com/ico/touch-icon-144.png">
+    <link rel="shortcut icon" href="//blivesta.com/ico/favicon.ico">
+    <!-- Font -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:900,100,700,400' rel='stylesheet' type='text/css'>
+
+    <!-- sircus css -->
+    <link rel="stylesheet" href="../css/sircus.min.css">
+    <!-- Docs css -->
+    <link rel="stylesheet" href="../css/main.min.css">
+
+  </head>

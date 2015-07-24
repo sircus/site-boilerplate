@@ -52,7 +52,7 @@ gulp.task('engine', function() {
 				site: config
 			},
 			helpers: './src/helpers/handlebars-helpers.js',
-			partials: './src/partials/**.hbs'
+			partials: './src/partials/**/*.hbs'
 		}))
 		.pipe(rename(function(path){
 				if (path.basename == 'index'){
@@ -165,7 +165,7 @@ gulp.task('cleanup', function(){
 gulp.task('build', function() {
 	runSequence(
 		'cleanup',
-		['js','css','sircus'],
+		'js','css','sircus',
 		'browserify',
 		'stylestats',
 		'engine',
@@ -178,5 +178,5 @@ gulp.task('default', ['watch']);
 
 gulp.task('watch',['browsersync'],function() {
 	gulp.watch('gh-pages/**/*.html', reload);
-	gulp.watch('src/**/*.{hbs,html,css,js,md}', ['engine',reload]);
+	gulp.watch('src/**/*.{hbs,html,css,js}', ['engine',reload]);
 });

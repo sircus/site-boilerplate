@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  {{#is file.meta.layout home}}
-  <meta name="description" content="{{site.description}}">
-  <title>{{site.title}}</title>
-  {{else}}
-  <meta name="description" content="{{ file.meta.description }}">
-  <title>{{file.meta.title}} - {{site.title}}</title>
-  {{/is}}
-
-  {{> head-link}}
-
-</head>
+{{> include/head}}
 
 <body>
 
-  {{> header}}
+{{> include/header}}
 
 {{{block "content"}}}
 
-{{> footer}}
-
+{{> include/footer}}
 </body>
 </html>
