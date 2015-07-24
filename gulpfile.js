@@ -35,14 +35,14 @@ gulp.task('engine', function() {
 
 	function getJSON(file) {
 		try {
-			return require(file.path.replace('.html','.json'));
+			return require(file.path.replace('.hbs','.json'));
 		}
 		catch (e) {
 			return {};
 		}
 	}
 
-	return gulp.src(root.src + '/**/*.html')
+	return gulp.src(root.src + '/**/*.hbs')
 		.pipe(data(getJSON))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
@@ -56,11 +56,12 @@ gulp.task('engine', function() {
 		}))
 		.pipe(rename(function(path){
 				if (path.basename == 'index'){
-						return;
-				}
+  				path.extname = ".html";
+				} else {
 				path.dirname  = (path.dirname ? path.dirname + "/" : "") + path.basename;
 				path.basename = "index";
 				path.extname = ".html";
+      }
 		}))
 		.pipe(gulp.dest(root.build));
 });
@@ -151,7 +152,7 @@ gulp.task('browsersync', function() {
 		}
 	});
 
-  gulp.watch(root.src + '/**/*.{hbs,html,css,js}', ['engine', reload]);
+  gulp.watch(root.src + '/**/*.{hbs,css,js}', ['engine', reload]);
   gulp.watch(root.build + '/**/*.html', reload);
 });
 
