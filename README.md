@@ -69,13 +69,26 @@ build:
 
 ```
 example:
-{{pkg.name}}
-{{site.title}}
+{{pkg.object}}
+{{site.object}}
+```
+  - Data from json file
+
+```
+example:
+{{file.data.object}}
+```
+
+  - Data from front matter
+
+```
+example:
+{{file.meta.object}}
 ```
 
 - Static files using common name
-  - CSS: main.css
-  - JS: app.js
+  - css: main.css
+  - js: app.js
 
 - Prepared comparison helpers
   - is (A == B)
