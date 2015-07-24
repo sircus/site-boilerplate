@@ -100,11 +100,6 @@ gulp.task('browserify', function() {
 
 // ----------------------------------------------------------------
 
-gulp.task('sircus', function() {
-	return gulp.src('./node_modules/sircus/dist/sircus.min.css')
-		.pipe(gulp.dest(root.build + '/css'));
-});
-
 gulp.task('css', function() {
 	var cssnext = require("gulp-cssnext");
 
@@ -170,7 +165,7 @@ gulp.task('build', function() {
 	runSequence(
     'cleanup',
     ['js','browserify'],
-    ['sircus','css','stylestats'],
+    ['css','stylestats'],
     'engine',
     'images',
     'default'
