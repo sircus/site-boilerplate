@@ -164,13 +164,12 @@ gulp.task('cleanup', function(){
 
 gulp.task('build', function() {
 	runSequence(
-		'cleanup',
-		'js','css','sircus',
-		'browserify',
-		'stylestats',
-		'engine',
-		'images',
-		'default'
+    'cleanup',
+    ['js','browserify'],
+    ['sircus','css','stylestats'],
+    'engine',
+    'images',
+    'default'
 	);
 });
 
