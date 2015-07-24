@@ -106,7 +106,7 @@ gulp.task('css', function() {
 	return gulp.src(root.src + '/static/css/main.css')
 		.pipe(header(banner, {pkg:pkg}))
 		.pipe(cssnext({
-			compress: true
+			compress: false
 		}))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(root.build + '/css'));
