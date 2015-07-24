@@ -42,13 +42,19 @@ src:
 │   ├── / css
 │   │   ├── main.css
 │   │   ├── / folder
-│   │   │   ├── / import.css
+│   │   │   ├── import.css
 │   └── / js
 │   │   │── app.js
 ├── / data
-│   ├── / sircus.json
+│   ├── sircus.json
 ├── / partials
-└── / helpers
+│   ├── home.hbs
+│   ├── page.hbs
+│   ├── / include
+│   │   ├── head.hbs
+│   │   ├── footer.hbs
+├── / helpers
+└── ── handlebars-helpers.js
 ```
 
 build:
