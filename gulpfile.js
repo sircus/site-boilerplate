@@ -5,7 +5,7 @@ var pkg = require('./package.json');
 var header = require('gulp-header');
 var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 var root = {
   src:'./src',
@@ -42,7 +42,7 @@ gulp.task('engine', function() {
 		}
 	}
 
-	return gulp.src('./src/**/*.html')
+	return gulp.src(root.src + '/**/*.html')
 		.pipe(data(getJSON))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
@@ -51,8 +51,8 @@ gulp.task('engine', function() {
 				pkg: pkg,
 				site: config
 			},
-			helpers: './src/helpers/handlebars-helpers.js',
-			partials: './src/partials/**/*.hbs'
+			helpers: root.src + '/helpers/**/*.js',
+			partials: root.src + '/partials/**/*.hbs'
 		}))
 		.pipe(rename(function(path){
 				if (path.basename == 'index'){
@@ -147,9 +147,12 @@ gulp.task('images', function() {
 gulp.task('browsersync', function() {
 	browserSync.init({
 		server: {
-			baseDir: "./gh-pages"
+			baseDir: root.build
 		}
 	});
+
+  gulp.watch(root.src + '/**/*.{hbs,html,css,js}', ['engine', reload]);
+  gulp.watch(root.build + '/**/*.html', reload);
 });
 
 // ----------------------------------------------------------------
@@ -173,9 +176,4 @@ gulp.task('build', function() {
 	);
 });
 
-gulp.task('default', ['watch']);
-
-gulp.task('watch',['browsersync'],function() {
-	gulp.watch('gh-pages/**/*.html', reload);
-	gulp.watch('src/**/*.{hbs,html,css,js}', ['engine',reload]);
-});
+gulp.task('default', ['browsersync']);

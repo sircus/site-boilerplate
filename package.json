@@ -26,7 +26,7 @@
     "sircus": "^1.0.0-alpha.1",
     "handlebars-layouts": "^2.0.2",
     "helper-markdown": "^0.1.1",
-    "browser-sync": "^2.2.1",
+    "browser-sync": "^2.8.0",
     "run-sequence": "^1.0.2",
     "js-yaml": "^3.3.1",
     "del": "^1.2.0",
