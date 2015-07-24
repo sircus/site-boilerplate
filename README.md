@@ -3,13 +3,13 @@
 [![Build Status](https://img.shields.io/travis/sircus/sircus-web/master.svg?style=flat)](https://travis-ci.org/sircus/sircus-web)
 [![devDependency Status](https://david-dm.org/sircus/sircus-web/dev-status.svg)](https://david-dm.org/sircus/sircus-web#info=devDependencies&view=table)
 
-Sircus web is static site generator for sircus that Moduler CSS For People Who Make Web Together.
+Sircus Web Is Static Site Boilerplate For Sircus That Moduler CSS For People Who Make Web Together.
 
 [sircus.blivesta.com](http://sircus.blivesta.com/)
 
 ## Building
 
-Gulping Handlebars and JSON for GitHub Pages. It's the most powerful static site generator using gulp. Thanks  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
+Gulping Handlebars and JSON for GitHub Pages. It's the most powerful static site generator using gulp. Thanks see simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
 
 Install : `nodejs` `npm` `gulp`
 
