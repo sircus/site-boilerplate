@@ -39,7 +39,7 @@ var banner = [
 
 // ----------------------------------------------------------------
 
-gulp.task('engine', function() {
+gulp.task('html', function() {
   var hb = require('gulp-hb');
 	function getJSON(file) {
 		try {
@@ -154,7 +154,7 @@ gulp.task('browsersync', function() {
 
   gulp.watch([root.src + '/static/css/*.css'], ['css']);
   gulp.watch([root.src + '/static/js/*.js'], ['javascript']);
-  gulp.watch([root.src + '/**/*.hbs'], ['engine']);
+  gulp.watch([root.src + '/**/*.hbs'], ['html']);
   gulp.watch([root.build + '/{css,js}/*.{css,js}']).on('change', reload);
   gulp.watch([root.build + '/*.html']).on('change', reload);
 });
@@ -182,7 +182,7 @@ gulp.task('default', ['browsersync']);
 gulp.task('build', function() {
 	runSequence(
     ['cleanup'],
-    'javascript','jshint','css','engine','images',
+    'javascript','jshint','css','html','images',
     ['stylestats'],
     'default'
 	);
