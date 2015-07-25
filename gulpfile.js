@@ -34,15 +34,14 @@ var yaml = require('js-yaml');
 // ----------------------------------------------------------------
 
 gulp.task('html', function() {
-  var hb = require('gulp-hb');
-
+  // var hb = require('gulp-hb');
 	return gulp.src(['src/**/*.hbs','!src/{partials,partials/**}'])
 		.pipe(fm({ property: 'meta' }))
-		.pipe(hb({
+		.pipe(require('gulp-hb')({
 			debug: false,
 			data: {
 				pkg: pkg,
-				site: yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8')),
+				site: yaml.safeLoad(fs.readFileSync('./site.yml', 'utf8')),
         sircus: require('./src/data/sircus.json')
 			},
 			helpers: './src/helpers/**/*.js',

@@ -71,7 +71,7 @@ build:
 
 - To configure for your project new
   - `pkg` from package.json
-  - `site` from config.yml
+  - `site` from site.yml
 
 ```
 example:
