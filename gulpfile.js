@@ -147,12 +147,15 @@ gulp.task('images', function() {
 gulp.task('browsersync', function() {
 	browserSync.init({
 		server: {
-			baseDir: root.build
+			baseDir: root.build,
+      open: 'external'
 		}
 	});
 
-  gulp.watch(root.src + '/**/*.{hbs,css,js}', ['engine', reload]);
-  gulp.watch(root.build + '/**/*.html', reload);
+  gulp.watch([root.src + '/static/css/*.css'], ['css']);
+  gulp.watch([root.src + '/static/js/*.js'], ['javascript']);
+  gulp.watch([root.src + '/**/*.{hbs,css,js}'], ['engine', reload]);
+  gulp.watch([root.build + '/**/*.html']).on('change', reload);
 });
 
 // ----------------------------------------------------------------
