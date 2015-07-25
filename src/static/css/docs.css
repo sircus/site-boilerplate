@@ -7,9 +7,7 @@ h1,h2,h3,h4,h5,h6 {
   letter-spacing:-.03em;
   color:#6c7b88;
 }
-p {
-  /*font-family:'Roboto';*/
-}
+p {}
 s {
   color:rgba(108,123,126, .5);
 }
