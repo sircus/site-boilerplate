@@ -168,15 +168,23 @@ gulp.task('cleanup', function(){
 
 // ----------------------------------------------------------------
 
+gulp.task('minify',['cssmin','jsmin']);
+
+// ----------------------------------------------------------------
+
+gulp.task('deploy',['minify'], function() {});
+
+// ----------------------------------------------------------------
+
+gulp.task('default', ['browsersync']);
+
+// ----------------------------------------------------------------
+
 gulp.task('build', function() {
 	runSequence(
-    'cleanup',
-    'jshint','javascript','jsmin',
-    'css','cssmin','stylestats',
-    'engine',
-    'images',
+    ['cleanup'],
+    'images','javascript','jshint','css','engine',
+    ['stylestats'],
     'default'
 	);
 });
-
-gulp.task('default', ['browsersync']);
