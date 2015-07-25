@@ -42,7 +42,7 @@ gulp.task('engine', function() {
 		}
 	}
 
-	return gulp.src(root.src + '/**/*.hbs')
+	return gulp.src(['src/**/*.hbs','!src/{partials,partials/**}'])
 		.pipe(data(getJSON))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
