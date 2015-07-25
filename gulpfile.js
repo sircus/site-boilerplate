@@ -13,7 +13,6 @@ var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var cssnext = require('gulp-cssnext');
 var del = require('del');
-var data = require('gulp-data');
 var fm = require('gulp-front-matter');
 var fs = require('fs');
 var gulp = require('gulp');
@@ -31,7 +30,6 @@ var stylestats = require('gulp-stylestats');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml');
-var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 
 // ----------------------------------------------------------------
 
@@ -39,20 +37,13 @@ gulp.task('html', function() {
   var hb = require('gulp-hb');
 
 	return gulp.src(['src/**/*.hbs','!src/{partials,partials/**}'])
-		.pipe(data(function(file){
-      try {
-        return require(file.path.replace('.hbs','.json'));
-      } catch (error) {
-        console.error(error);
-        return error;
-      }
-    }))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
 			debug: false,
 			data: {
 				pkg: pkg,
-				site: config
+				site: yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8')),
+        sircus: require('./src/data/sircus.json')
 			},
 			helpers: './src/helpers/**/*.js',
 			partials: './src/partials/**/*.hbs'
@@ -176,9 +167,8 @@ gulp.task('default', ['browsersync']);
 
 gulp.task('build', function() {
 	runSequence(
-    ['cleanup'],
+    ['stylestats', 'cleanup'],
     'javascript','jshint','css','html','images',
-    ['stylestats'],
-    'default'
+    ['default']
 	);
 });
