@@ -37,17 +37,16 @@ var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 
 gulp.task('html', function() {
   var hb = require('gulp-hb');
-	function getJSON(file) {
-		try {
-			return require(file.path.replace('.hbs','.json'));
-		}
-		catch (e) {
-			return {};
-		}
-	}
 
 	return gulp.src(['src/**/*.hbs','!src/{partials,partials/**}'])
-		.pipe(data(getJSON))
+		.pipe(data(function(file){
+      try {
+        return require(file.path.replace('.hbs','.json'));
+      } catch (error) {
+        console.error(error);
+        return error;
+      }
+    }))
 		.pipe(fm({ property: 'meta' }))
 		.pipe(hb({
 			debug: false,
@@ -59,9 +58,9 @@ gulp.task('html', function() {
 			partials: './src/partials/**/*.hbs'
 		}))
 		.pipe(rename(function(path){
-				if (path.basename == 'index'){
-  				path.extname = '.html';
-				} else {
+			if (path.basename == 'index'){
+				path.extname = '.html';
+			} else {
 				path.dirname  = (path.dirname ? path.dirname + '/' : '') + path.basename;
 				path.basename = 'index';
 				path.extname = '.html';
