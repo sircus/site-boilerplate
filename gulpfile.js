@@ -1,21 +1,35 @@
 'use strict';
 
-var gulp = require('gulp');
-var pkg = require('./package.json');
+var browserSync = require('browser-sync');
+var browserify = require('browserify');
+var del = require('del');
+var fs = require('fs');
+var cssnext = require("gulp-cssnext");
+var data = require('gulp-data');
+var fm = require('gulp-front-matter');
 var header = require('gulp-header');
+var imagemin = require('gulp-imagemin');
+var jshint = require('gulp-jshint');
 var rename = require("gulp-rename");
+var sourcemaps   = require('gulp-sourcemaps');
+var stylestats = require('gulp-stylestats');
+var uglify = require('gulp-uglify');
+var gulp = require('gulp');
+var pngquant = require('imagemin-pngquant');
+var yaml = require('js-yaml');
+var stylish = require('jshint-stylish');
 var runSequence = require('run-sequence');
-var browserSync = require('browser-sync').create();
+var source = require('vinyl-source-stream');
+var pkg = require('./package.json');
+var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 var reload = browserSync.reload;
 var root = {
   src:'./src',
   build:'./gh-pages'
 };
-
 var banner = [
 '/*!',
-' * <%= pkg.name %>',
-' * <%= pkg.description %>',
+' * <%= pkg.name %> - <%= pkg.description %>',
 ' * Version <%= pkg.version %>',
 ' * <%= pkg.homepage %>',
 ' * Author : <%= pkg.author %>',
@@ -24,15 +38,9 @@ var banner = [
 ''].join('\n');
 
 // ----------------------------------------------------------------
-var fm = require('gulp-front-matter');
-var data = require('gulp-data');
-var fs = require('fs');
-var yaml = require('js-yaml');
-var config = yaml.safeLoad(fs.readFileSync('./config.yml', 'utf8'));
 
 gulp.task('engine', function() {
   var hb = require('gulp-hb');
-
 	function getJSON(file) {
 		try {
 			return require(file.path.replace('.hbs','.json'));
@@ -67,11 +75,6 @@ gulp.task('engine', function() {
 });
 
 // ----------------------------------------------------------------
-var stylish = require('jshint-stylish');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
 
 gulp.task('jshint', function() {
   return gulp.src(root.src + '/**/*.js')
@@ -98,9 +101,6 @@ gulp.task('jsmin', function() {
 });
 
 // ----------------------------------------------------------------
-var cssnext = require("gulp-cssnext");
-var sourcemaps   = require('gulp-sourcemaps');
-var stylestats = require('gulp-stylestats');
 
 gulp.task('css', function() {
 	return gulp.src(root.src + '/static/css/main.css')
@@ -131,8 +131,6 @@ gulp.task('stylestats', function() {
 });
 
 // ----------------------------------------------------------------
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
 
 gulp.task('images', function() {
 	return gulp.src(root.src + '/static/images/**/*')
@@ -158,7 +156,6 @@ gulp.task('browsersync', function() {
 });
 
 // ----------------------------------------------------------------
-var del = require('del');
 
 gulp.task('cleanup', function(){
 	return del([ root.build ]);
