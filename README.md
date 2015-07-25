@@ -104,11 +104,6 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 
 ## developments
 
-#### Sircus by [blivesta](https://github.com/sircus)
-
-- Modular CSS Family [Usage](https://github.com/sircus/sircus)
-- Use tomorrow's CSS syntax, today. [Usage](https://github.com/cssnext/cssnext)
-
 #### Handlebarsjs by [wycats](https://github.com/wycats)
 
 - Handlebarsjs [Usage](https://github.com/wycats/handlebars.js)
@@ -124,10 +119,20 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 - Markdown [basic, syntax](http://daringfireball.net/projects/markdown/)
 - Markdown Helper uses [CommonMark](https://github.com/jgm/CommonMark)
 
+#### cssnext by [Maxime Thirouin](http://cssnext.io/)
+- cssnext. [Usage](https://github.com/cssnext/cssnext)
+- [Gulp module](https://github.com/cssnext/gulp-cssnext) by [Maxime Thirouin](https://github.com/MoOx)
+
+
 #### Stylestats by [t32k](https://github.com/t32k/)
 
 - Stylestyle [Usage](https://github.com/t32k/stylestats)
 - [Gulp module](https://github.com/1000ch/gulp-stylestats) by [1000ch](https://github.com/1000ch)
+
+
+#### Sircus by [blivesta](https://github.com/sircus)
+- Modular CSS Family [Usage](https://github.com/sircus/sircus)
+
 
 ## Dependencies
 
