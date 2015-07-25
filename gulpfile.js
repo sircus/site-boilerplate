@@ -67,7 +67,7 @@ gulp.task('html', function() {
 				path.extname = '.html';
       }
 		}))
-		.pipe(gulp.dest(root.build));
+		.pipe(gulp.dest('./gh-pages'));
 });
 
 // ----------------------------------------------------------------
@@ -85,7 +85,7 @@ gulp.task('javascript', function() {
       console.log('Error : ' + err.message);
       this.emit('end');
     })
-    .pipe(source('bundle.js'))
+    .pipe(source(pkg.name + '.js'))
     .pipe(gulp.dest('./gh-pages/js'));
 });
 
@@ -143,7 +143,7 @@ gulp.task('images', function() {
 gulp.task('browsersync', function() {
 	browserSync.init({
 		server: {
-			baseDir: root.build,
+			baseDir: './gh-pages',
       open: 'external'
 		}
 	});
@@ -158,7 +158,7 @@ gulp.task('browsersync', function() {
 // ----------------------------------------------------------------
 
 gulp.task('cleanup', function(){
-	return del([ root.build ]);
+	return del([ './gh-pages' ]);
 });
 
 // ----------------------------------------------------------------
