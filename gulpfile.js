@@ -105,19 +105,20 @@ gulp.task('jsmin', function() {
 gulp.task('css', function() {
 	return gulp.src(root.src + '/static/css/main.css')
 		.pipe(header(banner, {pkg:pkg}))
-		.pipe(cssnext())
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write('.'))
+		.pipe(cssnext({
+        browsers: ['last 2 versions'],
+        sourcemap: true
+    }))
 		.pipe(gulp.dest(root.build + '/css'));
 });
 
 gulp.task('cssmin', function() {
-  	return gulp.src(root.src + '/static/css/main.css')
+	return gulp.src(root.src + '/static/css/main.css')
     .pipe(header(banner, {pkg:pkg}))
     .pipe(cssnext({
+      browsers: ['last 2 versions'],
 			compress: true
 		}))
-		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(root.build + '/css'));
 });
 
