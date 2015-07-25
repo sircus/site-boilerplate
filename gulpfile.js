@@ -83,7 +83,7 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('javascript', function() {
-  return browserify(root.src + '/static/js/app.js', { debug: true })
+  return browserify(root.src + '/static/js/' + pkg.name + '.js', { debug: true })
     .bundle()
     .on('error', function (err) {
       console.log('Error : ' + err.message);
@@ -94,7 +94,7 @@ gulp.task('javascript', function() {
 });
 
 gulp.task('jsmin', function() {
-	return gulp.src(root.build + '/js/bundle.js')
+	return gulp.src(root.build + '/js/' + pkg.name + '.js')
     .pipe(uglify())
 		.pipe(gulp.dest(root.build + '/js'));
 });
@@ -102,7 +102,7 @@ gulp.task('jsmin', function() {
 // ----------------------------------------------------------------
 
 gulp.task('css', function() {
-	return gulp.src(root.src + '/static/css/main.css')
+	return gulp.src(root.src + '/static/css/' + pkg.name + '.css')
 		.pipe(header(banner, {pkg:pkg}))
 		.pipe(cssnext({
         browsers: ['last 2 versions'],
@@ -112,7 +112,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('cssmin', function() {
-	return gulp.src(root.src + '/static/css/main.css')
+	return gulp.src(root.src + '/static/css/' + pkg.name + '.css')
     .pipe(header(banner, {pkg:pkg}))
     .pipe(cssnext({
       browsers: ['last 2 versions'],
