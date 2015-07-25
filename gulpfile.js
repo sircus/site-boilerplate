@@ -4,17 +4,17 @@ var browserSync = require('browser-sync');
 var browserify = require('browserify');
 var del = require('del');
 var fs = require('fs');
-var cssnext = require("gulp-cssnext");
+var cssnext = require('gulp-cssnext');
 var data = require('gulp-data');
 var fm = require('gulp-front-matter');
+var gulp = require('gulp');
 var header = require('gulp-header');
 var imagemin = require('gulp-imagemin');
 var jshint = require('gulp-jshint');
-var rename = require("gulp-rename");
+var rename = require('gulp-rename');
 var sourcemaps   = require('gulp-sourcemaps');
 var stylestats = require('gulp-stylestats');
 var uglify = require('gulp-uglify');
-var gulp = require('gulp');
 var pngquant = require('imagemin-pngquant');
 var yaml = require('js-yaml');
 var stylish = require('jshint-stylish');
@@ -64,11 +64,11 @@ gulp.task('engine', function() {
 		}))
 		.pipe(rename(function(path){
 				if (path.basename == 'index'){
-  				path.extname = ".html";
+  				path.extname = '.html';
 				} else {
-				path.dirname  = (path.dirname ? path.dirname + "/" : "") + path.basename;
-				path.basename = "index";
-				path.extname = ".html";
+				path.dirname  = (path.dirname ? path.dirname + '/' : '') + path.basename;
+				path.basename = 'index';
+				path.extname = '.html';
       }
 		}))
 		.pipe(gulp.dest(root.build));
@@ -83,20 +83,19 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('javascript', function() {
-	return browserify(root.src + '/static/js/app.js', { debug: true })
-		.bundle()
-		.on("error", function (err) {
-			console.log("Error : " + err.message);
-			this.emit('end');
-		})
-		.pipe(source('bundle.js'))
-		.pipe(gulp.dest(root.build + '/js'));
+  return browserify(root.src + '/static/js/app.js', { debug: true })
+    .bundle()
+    .on('error', function (err) {
+      console.log('Error : ' + err.message);
+      this.emit('end');
+    })
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest(root.build + '/js'));
 });
 
 gulp.task('jsmin', function() {
 	return gulp.src(root.build + '/js/bundle.js')
     .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest(root.build + '/js'));
 });
 
@@ -183,7 +182,7 @@ gulp.task('default', ['browsersync']);
 gulp.task('build', function() {
 	runSequence(
     ['cleanup'],
-    'images','javascript','jshint','css','engine',
+    'javascript','jshint','css','engine','images',
     ['stylestats'],
     'default'
 	);
