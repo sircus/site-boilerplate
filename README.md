@@ -11,7 +11,7 @@ Sircus Web Is Static Site Boilerplate For Sircus That Moduler CSS For People Who
 
 Gulping Handlebars and JSON for GitHub Pages. It's the most powerful static site generator using gulp. Thanks see simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
 
-Install : `nodejs` `npm` `gulp`
+Install : `nodejs` `gulp`
 
 ```
 $ git clone https://github.com/sircus/sircus-web.git
@@ -37,24 +37,12 @@ src:
 
 ```
 /src
-├── / static
-│   ├── / images
-│   ├── / css
-│   │   ├── main.css
-│   │   ├── / folder
-│   │   │   ├── import.css
-│   └── / js
-│   │   │── app.js
+├── / css
+├── / js
 ├── / data
-│   ├── sircus.json
+├── / images
 ├── / partials
-│   ├── home.hbs
-│   ├── page.hbs
-│   ├── / include
-│   │   ├── head.hbs
-│   │   ├── footer.hbs
-├── / helpers
-└── ── handlebars-helpers.js
+└──├── / include
 ```
 
 build:
@@ -63,8 +51,7 @@ build:
 / gh-pages
 ├── / css
 ├── / js
-├── / images
-└── index.html
+└── / images
 ```
 
 ## Usage
@@ -75,32 +62,23 @@ build:
 
 ```
 example:
-{{pkg.object}}
-{{site.object}}
-```
-  - Data from json file
-
-```
-example:
-{{file.data.object}}
+{{pkg.name}}
+{{site.name}}
 ```
 
   - Data from front matter
 
 ```
 example:
-{{file.meta.object}}
+{{file.meta.name}}
 ```
 
-- Static files using common name
-  - css: main.css
-  - js: app.js
-
 - Prepared comparison helpers
-  - is (A == B)
-  - isnot (A !== B)
+  - is (A equal B)
+  - isnot (A not equal B)
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
+
 
 ## developments
 
@@ -123,12 +101,10 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 - cssnext. [Usage](https://github.com/cssnext/cssnext)
 - [Gulp module](https://github.com/cssnext/gulp-cssnext) by [Maxime Thirouin](https://github.com/MoOx)
 
-
 #### Stylestats by [t32k](https://github.com/t32k/)
 
 - Stylestyle [Usage](https://github.com/t32k/stylestats)
 - [Gulp module](https://github.com/1000ch/gulp-stylestats) by [1000ch](https://github.com/1000ch)
-
 
 #### Sircus by [blivesta](https://github.com/sircus)
 - Modular CSS Family [Usage](https://github.com/sircus/sircus)
