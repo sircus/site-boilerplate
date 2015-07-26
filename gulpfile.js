@@ -38,6 +38,8 @@ var fm = require('gulp-front-matter');
 var hb = require('gulp-hb');
 var yaml = require('js-yaml');
 
+var htmlmin = require('gulp-htmlmin');
+
 // ----------------------------------------------------------------
 
 gulp.task('html', function() {
@@ -65,6 +67,13 @@ gulp.task('html', function() {
       }
 		}))
 		.pipe(gulp.dest('./gh-pages'));
+});
+
+gulp.task('htmlmin', function() {
+  return gulp
+		.src('./gh-pages/**/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('./gh-pages'))
 });
 
 // ----------------------------------------------------------------
@@ -165,7 +174,7 @@ gulp.task('cleanup', function(){
 
 // ----------------------------------------------------------------
 
-gulp.task('minify',['cssmin','jsmin']);
+gulp.task('minify',['cssmin','jsmin','htmlmin']);
 
 // ----------------------------------------------------------------
 
