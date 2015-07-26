@@ -69,6 +69,10 @@ example: {{pkg.name}}
 "version": "0.0.0",
 "author": "yourName <yourEmail@gmail.com> (https://github.com/your-repo)",
 "description": "your project description",
+"repository": {
+  "type": "git",
+  "url": "https://github.com/your-repo.git"
+},
 ```
 
   - `site` from site.yml
