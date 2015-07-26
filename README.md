@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/travis/sircus/site-boilerplate/master.svg?style=flat)](https://travis-ci.org/sircus/site-boilerplate)
 [![devDependency Status](https://david-dm.org/sircus/site-boilerplate/dev-status.svg)](https://david-dm.org/sircus/site-boilerplate#info=devDependencies&view=table)
 
-A Site Boilerplate For Sircus That Moduler CSS For People Who Make Web Together. Gulping Handlebars and JSON for GitHub Pages. It's The Most Powerful Static Site Generator Using Gulp. Thanks See Simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
+Gulping Handlebars and JSON for GitHub Pages. It's The Most Powerful Static Site Generator Using Gulp. Thanks See Simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
 
 ## Building
 
@@ -25,6 +25,12 @@ Watch & Connect:
 
 ```
 $ gulp
+```
+
+deploy:
+
+```
+$ gulp deploy
 ```
 
 ## Structure
