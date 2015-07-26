@@ -39,6 +39,7 @@ var hb = require('gulp-hb');
 var yaml = require('js-yaml');
 
 var htmlmin = require('gulp-htmlmin');
+var ghpages = require('gulp-gh-pages');
 
 // ----------------------------------------------------------------
 
@@ -193,10 +194,18 @@ gulp.task('build', ['cleanup'], function(cb) {
 
 // ----------------------------------------------------------------
 
+gulp.task('gh-pages', function() {
+	return gulp.src('./gh-pages/**/*')
+		.pipe(ghpages({
+			remoteUrl: pkg.repository.url,
+			branch: 'gh-pages'
+		}));
+});
+
 gulp.task('deploy', ['build'], function(cb){
 	runSequence(
     ['minify'],
-    // 'gh-pages',
+    'gh-pages',
 		cb
 	);
 });
