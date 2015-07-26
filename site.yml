@@ -1,8 +1,7 @@
 title: Site Boilerplate
 description: Gulping Handlebars and JSON for GitHub Pages
-url: http://sircus.blivesta.com/site-boilerplate
-copyright: Copyright (c) 2015 ungki. all rights reserved.
+tags: gulp, handlebars, sircus
 author: ungki
 author_url: https://github.com/ungki
-tags: gulp, handlebars, sircus
-github_url: https://github.com/sircus/site-boilerplate
+github_url: https://github.com/ungki
+copyright: Copyright (c) 2015 ungki. all rights reserved.

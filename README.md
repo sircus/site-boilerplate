@@ -60,19 +60,35 @@ build:
 
 - To configure for your project new
   - `pkg` from package.json
+
+```
+example: {{pkg.name}}
+```
+```
+"name": "your-project",
+"version": "0.0.0",
+"author": "yourName <yourEmail@gmail.com> (https://github.com/your-repo)",
+"description": "your project description",
+```
+
   - `site` from site.yml
 
 ```
-example:
-{{pkg.name}}
-{{site.name}}
+example:  {{site.title}}
+```
+```
+title: your site
+description: your site description
+tags: every1
+author: your name
+author_url: https://github.com/your-repo
+copyright: Copyright (c) 2015 your name. all rights reserved.
 ```
 
   - Data from front matter
 
 ```
-example:
-{{file.meta.name}}
+example: {{file.meta.name}}
 ```
 
 - Prepared comparison helpers

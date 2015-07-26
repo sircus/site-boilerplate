@@ -7,8 +7,7 @@
   "keywords": [
     "sircus",
     "gulp",
-    "handlebars",
-    "static site generator"
+    "handlebars"
   ],
   "license": "MIT",
   "repository": {
