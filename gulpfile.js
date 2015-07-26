@@ -168,17 +168,9 @@ gulp.task('browsersync', function() {
 
 // ----------------------------------------------------------------
 
-gulp.task('cleanup', function(){
-	return del([ './gh-pages' ]);
+gulp.task('cleanup', function(cb){
+	return del([ './gh-pages' ],cb);
 });
-
-// ----------------------------------------------------------------
-
-gulp.task('minify',['cssmin','jsmin','htmlmin']);
-
-// ----------------------------------------------------------------
-
-gulp.task('deploy',['minify'], function(){});
 
 // ----------------------------------------------------------------
 
@@ -186,10 +178,25 @@ gulp.task('default', ['browsersync']);
 
 // ----------------------------------------------------------------
 
-gulp.task('build', function() {
+gulp.task('minify',['cssmin','jsmin','htmlmin']);
+
+// ----------------------------------------------------------------
+
+gulp.task('build', ['cleanup'], function(cb) {
 	runSequence(
-    ['stylestats', 'cleanup'],
+    ['stylestats'],
     'javascript','jshint','css','html','images',
-    ['default']
+    ['default'],
+		cb
+	);
+});
+
+// ----------------------------------------------------------------
+
+gulp.task('deploy', ['build'], function(cb){
+	runSequence(
+    ['minify'],
+    // 'gh-pages',
+		cb
 	);
 });
