@@ -58,8 +58,9 @@ build:
 
 ## Usage
 
-- To configure for your project new
-  - `pkg` from package.json
+To configure for your project new
+
+- `pkg` from package.json
 
 ```
 example: {{pkg.name}}
@@ -75,7 +76,7 @@ example: {{pkg.name}}
 },
 ```
 
-  - `site` from site.yml
+- `site` from site.yml
 
 ```
 example:  {{site.title}}
@@ -89,15 +90,19 @@ author_url: https://github.com/your-repo
 copyright: Copyright (c) 2015 your name. all rights reserved.
 ```
 
-  - Data from front matter
+- Data from front matter
 
 ```
 example: {{file.meta.name}}
 ```
 
-- Prepared comparison helpers
-  - is (A equal B)
-  - isnot (A not equal B)
+Prepared comparison helpers
+- `is` (A equal B)
+- `isnot` (A not equal B)
+
+```
+example: {{#is A B}}, {{#isnot A B}}
+```
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
 
