@@ -1,12 +1,8 @@
-title: sircus
-description: Moduler CSS For People Who Make Web Together.
-copyright: Copyright (c) 2015 blivesta and ungki. all rights reserved.
-author: blivesta
-author_url: http://blivesta.com
-maintainer: ungki
-maintainer_url: https://github.com/ungki
-tags: sircus, scalable css, moduler css, cssnext, postcss
-twitter: blivesta
-sircus_url: http://sircus.blivesta.com
-github_url: https://github.com/sircus/sircus
-git_star_btn: http://ghbtns.com/github-btn.html?user=sircus&repo=sircus&type=watch&count=true
+title: Site Boilerplate
+description: Gulping Handlebars and JSON for GitHub Pages
+url: http://sircus.blivesta.com/site-boilerplate
+copyright: Copyright (c) 2015 ungki. all rights reserved.
+author: ungki
+author_url: https://github.com/ungki
+tags: gulp, handlebars, sircus
+github_url: https://github.com/sircus/site-boilerplate

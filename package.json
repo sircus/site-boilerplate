@@ -1,9 +1,9 @@
 {
-  "name": "sircus-web",
+  "name": "site-boilerplate",
   "version": "0.0.1",
-  "author": "ungki <ungki.h@gmail.com> (https://github.com/ungki/)",
+  "author": "ungki <ungki.h@gmail.com> (https://github.com/ungki)",
   "description": "Gulping Handlebars  and JSON for GitHub Pages.",
-  "homepage": "https://github.com/sircus/sircus-web",
+  "homepage": "http://sircus.blivesta.com/site-boilerplate",
   "keywords": [
     "sircus",
     "gulp",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sircus/sircus-web.git"
+    "url": "https://github.com/sircus/site-boilerplate.git"
   },
   "devDependencies": {
     "browser-sync": "^2.8.0",

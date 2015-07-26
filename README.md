@@ -1,21 +1,17 @@
-# Sircus Web
+# Site Boilerplate
 
-[![Build Status](https://img.shields.io/travis/sircus/sircus-web/master.svg?style=flat)](https://travis-ci.org/sircus/sircus-web)
-[![devDependency Status](https://david-dm.org/sircus/sircus-web/dev-status.svg)](https://david-dm.org/sircus/sircus-web#info=devDependencies&view=table)
+[![Build Status](https://img.shields.io/travis/sircus/site-boilerplate/master.svg?style=flat)](https://travis-ci.org/sircus/site-boilerplate)
+[![devDependency Status](https://david-dm.org/sircus/site-boilerplate/dev-status.svg)](https://david-dm.org/sircus/site-boilerplate#info=devDependencies&view=table)
 
-Sircus Web Is Static Site Boilerplate For Sircus That Moduler CSS For People Who Make Web Together.
-
-[sircus.blivesta.com](http://sircus.blivesta.com/)
+A Site Boilerplate For Sircus That Moduler CSS For People Who Make Web Together. Gulping Handlebars and JSON for GitHub Pages. It's The Most Powerful Static Site Generator Using Gulp. Thanks See Simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
 
 ## Building
-
-Gulping Handlebars and JSON for GitHub Pages. It's the most powerful static site generator using gulp. Thanks see simple  [boilerplate](https://github.com/shannonmoeller/gulp-hb-boilerplate)
 
 Install : `nodejs` `gulp`
 
 ```
-$ git clone https://github.com/sircus/sircus-web.git
-$ cd sircus-web
+$ git clone https://github.com/sircus/site-boilerplate.git
+$ cd site-boilerplate
 $ npm install
 ```
 
@@ -112,7 +108,7 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 
 ## Dependencies
 
-- [Package](https://github.com/sircus/sircus-web/blob/master/package.json)
+- [Package](https://github.com/sircus/site-boilerplate/blob/master/package.json)
 
 ## License
 Released under the [MIT license](https://github.com/sircus/license/blob/master/LICENSE).
