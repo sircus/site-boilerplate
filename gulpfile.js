@@ -197,9 +197,8 @@ gulp.task('cleanup', function(cb){
 // ----------------------------------------------------------------
 
 gulp.task('ghpages', function(){
-	return gulp.src('./gh-pages')
+	return gulp.src('./gh-pages/**/*')
     .pipe(ghpages({
-	    src : './gh-pages/**/*',
 	    remoteUrl : pkg.repository.url,
 	    branch : 'gh-pages'
 		}));
