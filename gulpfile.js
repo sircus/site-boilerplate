@@ -54,8 +54,8 @@ gulp.task('html', function() {
 				site: yaml.safeLoad(fs.readFileSync('./site.yml', 'utf8')),
         sircus: require('./src/data/sircus.json')
 			},
-			helpers: './src/helpers/**/*.js',
-			partials: ['./src/partials/**/*.hbs']
+			helpers: './helpers.js',
+			partials: './src/partials/**/*.hbs'
 		}))
 		.pipe(rename(function(path){
 			if (path.basename == 'index'){

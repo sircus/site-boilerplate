@@ -6,17 +6,19 @@ module.exports.register = function (handlebars) {
   handlebars.registerHelper('markdown', md);
 
   handlebars.registerHelper('is', function(context, compare, options) {
-    if(context ==  compare) {
+    if(context == compare) {
       return options.fn(this);
+    } else {
+      return options.inverse(this);
     }
-    return options.inverse(this);
   });
 
   handlebars.registerHelper('isnot', function(context, compare, options) {
-    if(context !== compare) {
-      return options.fn(this);
+    if(context == compare) {
+      return options.inverse(this);
+    } else {
+      return options.fn(this);      
     }
-    return options.inverse(this);
   });
 
 };
