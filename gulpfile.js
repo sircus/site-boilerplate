@@ -1,14 +1,15 @@
 'use strict';
 
 var banner = [
-'/*!',
-' * <%= pkg.name %> - <%= pkg.description %>',
-' * Version <%= pkg.version %>',
-' * <%= pkg.homepage %>',
-' * Author : <%= pkg.author %>',
-' * License : <%= pkg.license %>',
-' */',
-''].join('\n');
+  '/*!',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * Version <%= pkg.version %>',
+  ' * <%= pkg.homepage %>',
+  ' * Author : <%= pkg.author %>',
+  ' * License : <%= pkg.license %>',
+  ' */',
+  ''
+].join('\n');
 
 var del = require('del');
 var fs = require('fs');
@@ -46,51 +47,55 @@ var yaml = require('js-yaml');
 // ----------------------------------------------------------------
 
 gulp.task('html', function() {
-	return gulp
-		.src(['src/**/*.hbs','!src/{partials,partials/**}'])
-		.pipe(fm({ property: 'meta' }))
-		.pipe(hb({
-			bustCache: true,
-			debug: true,
-			data: {
-				pkg: pkg,
-				site: yaml.safeLoad(fs.readFileSync('./site.yml', 'utf8')),
+  return gulp
+    .src(['src/**/*.hbs', '!src/{partials,partials/**}'])
+    .pipe(fm({
+      property: 'meta'
+    }))
+    .pipe(hb({
+      bustCache: true,
+      debug: true,
+      data: {
+        pkg: pkg,
+        site: yaml.safeLoad(fs.readFileSync('./site.yml', 'utf8')),
         sircus: require('./src/data/sircus.json')
-			},
-			helpers: './helpers.js',
-			partials: './src/partials/**/*.hbs'
-		}))
-		.pipe(rename(function(path){
-			if (path.basename == 'index'){
-				path.extname = '.html';
-			} else {
-				path.dirname  = (path.dirname ? path.dirname + '/' : '') + path.basename;
-				path.basename = 'index';
-				path.extname = '.html';
+      },
+      helpers: './helpers.js',
+      partials: './src/partials/**/*.hbs'
+    }))
+    .pipe(rename(function(path) {
+      if (path.basename == 'index') {
+        path.extname = '.html';
+      } else {
+        path.dirname = (path.dirname ? path.dirname + '/' : '') + path.basename;
+        path.basename = 'index';
+        path.extname = '.html';
       }
-		}))
-		.pipe(gulp.dest('./gh-pages'));
+    }))
+    .pipe(gulp.dest('./gh-pages'));
 });
 
 gulp.task('htmlmin', function() {
   return gulp
-		.src('./gh-pages/**/*.html')
-    .pipe(htmlmin({ collapseWhitespace: true }))
+    .src('./gh-pages/**/*.html')
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest('./gh-pages'));
 });
 
 gulp.task('htmlhint', function() {
   return gulp
-		.src('./gh-pages/**/*.html')
+    .src('./gh-pages/**/*.html')
     .pipe(htmlhint())
     .pipe(htmlhint.reporter('htmlhint-stylish'));
 });
 
-gulp.task('sitemap', function () {
+gulp.task('sitemap', function() {
   return gulp
-		.src('./gh-pages/**/*.html')
+    .src('./gh-pages/**/*.html')
     .pipe(sitemap({
-	    siteUrl: pkg.homepage
+      siteUrl: pkg.homepage
     }))
     .pipe(gulp.dest('./gh-pages'));
 });
@@ -98,9 +103,11 @@ gulp.task('sitemap', function () {
 // ----------------------------------------------------------------
 
 gulp.task('js', function() {
-  return browserify('./src/js/' + pkg.name + '.js', { debug: true })
+  return browserify('./src/js/' + pkg.name + '.js', {
+      debug: true
+    })
     .bundle()
-    .on('error', function (err) {
+    .on('error', function(err) {
       console.log('Error : ' + err.message);
       this.emit('end');
     })
@@ -109,75 +116,78 @@ gulp.task('js', function() {
 });
 
 gulp.task('jsmin', function() {
-	return gulp
-		.src('./gh-pages/js/' + pkg.name + '.js')
+  return gulp
+    .src('./gh-pages/js/' + pkg.name + '.js')
     .pipe(uglify())
-		.pipe(gulp.dest('./gh-pages/js'));
+    .pipe(gulp.dest('./gh-pages/js'));
 });
 
 gulp.task('jshint', function() {
   return gulp
-	.src('./src/**/*.js')
-  .pipe(jshint())
-  .pipe(jshint.reporter(stylish));
+    .src('./src/**/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish));
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('css', function() {
-	return gulp
-		.src('./src/css/' + pkg.name + '.css')
-		.pipe(header(banner, {pkg:pkg}))
-		.pipe(cssnext({
-        browsers: ['last 2 versions'],
-        sourcemap: true
+  return gulp
+    .src('./src/css/' + pkg.name + '.css')
+    .pipe(header(banner, {
+      pkg: pkg
     }))
-		.pipe(gulp.dest('./gh-pages/css'));
+    .pipe(cssnext({
+      browsers: ['last 2 versions'],
+      sourcemap: true
+    }))
+    .pipe(gulp.dest('./gh-pages/css'));
 });
 
 gulp.task('cssmin', function() {
-	return gulp
-		.src('./src/css/' + pkg.name + '.css')
-    .pipe(header(banner, {pkg:pkg}))
+  return gulp
+    .src('./src/css/' + pkg.name + '.css')
     .pipe(cssnext({
       browsers: ['last 2 versions'],
-			compress: true
-		}))
-		.pipe(gulp.dest('./gh-pages/css'));
+      compress: true
+    }))
+    .pipe(gulp.dest('./gh-pages/css'));
 });
 
 gulp.task('stylestats', function() {
-	return gulp
-		.src('./node_modules/sircus/dist/sircus.css')
-		.pipe(stylestats({
-			type: 'json',
-			outfile: true
-		}))
-		.pipe(gulp.dest('./src/data'));
+  return gulp
+    .src('./node_modules/sircus/dist/sircus.css')
+    .pipe(stylestats({
+      type: 'json',
+      outfile: true
+    }))
+    .pipe(gulp.dest('./src/data'));
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('images', function() {
-	return gulp
-		.src('./src/images/**/*')
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
-			use: [pngquant()]
-		}))
-		.pipe(gulp.dest('./gh-pages/images'));
+  return gulp
+    .src('./src/images/**/*')
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest('./gh-pages/images'));
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('serve', function() {
-	browserSync.init({
-		server: {
-			baseDir: './gh-pages',
+  browserSync.init({
+    server: {
+      baseDir: './gh-pages',
       open: 'external'
-		}
-	});
+    }
+  });
   gulp.watch(['./src/css/*.css'], ['css']);
   gulp.watch(['./src/js/*.js'], ['js']);
   gulp.watch(['./src/**/*.hbs'], ['html']);
@@ -189,63 +199,62 @@ gulp.task('serve', function() {
 
 gulp.task('pagespeed', function() {
   return pagespeed(pkg.homepage, {
-      nokey: 'true',
-      strategy: 'desktop',
-  }, function (err, data) {
-      console.log('Score: ' + data.score);
-      console.log('Page stats');
-      console.log(data.pageStats);
+    nokey: 'true',
+    strategy: 'desktop',
+  }, function(err, data) {
+    console.log('Score: ' + data.score);
+    console.log('Page stats');
+    console.log(data.pageStats);
   });
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('cleanup', function(cb){
-	return del([ './gh-pages' ],cb);
+gulp.task('cleanup', function(cb) {
+  return del(['./gh-pages'], cb);
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('ghpages', function(){
-	return gulp.src('./gh-pages/**/*')
+gulp.task('ghpages', function() {
+  return gulp
+    .src('./gh-pages/**/*')
     .pipe(ghpages({
-	    remoteUrl : pkg.repository.url,
-	    branch : 'gh-pages'
-		}));
+      remoteUrl: pkg.repository.url,
+      branch: 'gh-pages'
+    }));
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('minify',['cssmin','jsmin','htmlmin']);
+gulp.task('minify', ['cssmin', 'jsmin', 'htmlmin']);
 
 
 // ----------------------------------------------------------------
 
-gulp.task('default', ['build'], function(cb){
-	runSequence(
+gulp.task('default', ['build'], function(cb) {
+  runSequence(
     ['serve'],
-		cb
-	);
+    cb
+  );
 });
 
 // ----------------------------------------------------------------
 
 gulp.task('build', ['cleanup'], function(cb) {
-	runSequence(
+  runSequence(
     ['stylestats'],
-    'js','css','html','images',
-		['sitemap','jshint','htmlhint'],
-		cb
-	);
+    'js', 'css', 'html', 'images', ['sitemap', 'jshint', 'htmlhint'],
+    cb
+  );
 });
 
 // ----------------------------------------------------------------
 
-gulp.task('deploy', ['build'], function(cb){
-	runSequence(
+gulp.task('deploy', ['build'], function(cb) {
+  runSequence(
     ['minify'],
-    'ghpages',
-		['pagespeed'],
-		cb
-	);
+    'ghpages', ['pagespeed'],
+    cb
+  );
 });
