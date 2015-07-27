@@ -37,6 +37,7 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 
 var fm = require('gulp-front-matter');
+var sitemap = require('gulp-sitemap');
 var hb = require('gulp-hb');
 var htmlmin = require('gulp-htmlmin');
 var htmlhint = require("gulp-htmlhint");
@@ -83,6 +84,15 @@ gulp.task('htmlhint', function() {
 		.src('./gh-pages/**/*.html')
     .pipe(htmlhint())
     .pipe(htmlhint.reporter('htmlhint-stylish'));
+});
+
+gulp.task('sitemap', function () {
+  return gulp
+		.src('./gh-pages/**/*.html')
+    .pipe(sitemap({
+	    siteUrl: pkg.homepage
+    }))
+    .pipe(gulp.dest('./gh-pages'));
 });
 
 // ----------------------------------------------------------------
@@ -224,7 +234,7 @@ gulp.task('build', ['cleanup'], function(cb) {
 	runSequence(
     ['stylestats'],
     'js','css','html','images',
-		['jshint','htmlhint'],
+		['sitemap','jshint','htmlhint'],
 		cb
 	);
 });
