@@ -23,7 +23,6 @@ var runSequence = require('run-sequence');
 var browserify = require('browserify');
 var jshint = require('gulp-jshint');
 var source = require('vinyl-source-stream');
-var sourcemaps = require('gulp-sourcemaps');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 
