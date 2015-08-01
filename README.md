@@ -120,14 +120,14 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 - Handlebars Registrar [API, Options](https://github.com/shannonmoeller/handlebars-registrar)
 - Handlebars Layouts [API, Helpers](https://github.com/shannonmoeller/handlebars-layouts)
 
-#### Markdown by [Helper](https://github.com/helpers)
+#### Markdown by [Helper](https://github.com/helpers/helper-markdown)
 
 - Markdown [basic, syntax](http://daringfireball.net/projects/markdown/)
-- Markdown Helper uses [CommonMark](https://github.com/jgm/CommonMark)
+- Markdown Helper uses [remarkable](https://github.com/jonschlinkert/remarkable)
 
-#### cssnext by [Maxime Thirouin](http://cssnext.io/)
+#### cssnext by [Maxime Thirouin](https://github.com/MoOx)
 - cssnext. [Usage](https://github.com/cssnext/cssnext)
-- [Gulp module](https://github.com/cssnext/gulp-cssnext) by [Maxime Thirouin](https://github.com/MoOx)
+- [Gulp module](https://github.com/cssnext/gulp-cssnext)
 
 #### Stylestats by [t32k](https://github.com/t32k/)
 
