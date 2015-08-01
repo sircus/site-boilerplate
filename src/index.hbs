@@ -20,6 +20,10 @@ base_url: "./"
 	sircus published : {{sircus.published}}
 </p>
 
+<P>
+	#isor conditional : {{#isor file.meta.title "Site Boilerplate" or="undefined"}} {{file.meta.layout}} {{/isor}}
+</p>
+
 {{#markdown}}
 
 ## HTML
