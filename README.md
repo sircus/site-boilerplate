@@ -99,15 +99,16 @@ example: {{file.meta.name}}
 Prepared comparison helpers
 - `is` (A equal B)
 - `isnot` (A not equal B)
+- `isor` (A equal B or="C")
 
 ```
-example: {{#is A B}}, {{#isnot A B}}
+example: {{#is A "B"}}, {{#isnot A "B"}}, {{#isor A "B" or="C"}}
 ```
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
 
 
-## developments
+## Dependencies
 
 #### Handlebarsjs by [wycats](https://github.com/wycats)
 
@@ -137,7 +138,7 @@ More useful helpers [here](https://github.com/helpers) by Helper team. Some help
 - Modular CSS Family [Usage](https://github.com/sircus/sircus)
 
 
-## Dependencies
+## Other devDependencies
 
 - [Package](https://github.com/sircus/site-boilerplate/blob/master/package.json)
 
