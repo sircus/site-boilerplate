@@ -17,7 +17,15 @@ module.exports.register = function (handlebars) {
     if(context == compare) {
       return options.inverse(this);
     } else {
-      return options.fn(this);      
+      return options.fn(this);
+    }
+  });
+
+  handlebars.registerHelper('isor', function(context, compare, options) {
+    if(context == compare || context == options.hash.or) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
     }
   });
 
