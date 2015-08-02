@@ -99,10 +99,9 @@ example: {{file.meta.name}}
 Prepared comparison helpers
 - `is` (A equal B)
 - `isnot` (A not equal B)
-- `isor` (A equal B or="C")
 
 ```
-example: {{#is A "B"}}, {{#isnot A "B"}}, {{#isor A "B" or="C"}}
+example: {{#is A "B"}}, {{#isnot A "B"}} and or="C" option
 ```
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
