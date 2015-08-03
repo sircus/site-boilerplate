@@ -1,3 +1,17 @@
+pre {
+  display: block;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  padding: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+pre code[class*="lang-"] {
+  white-space: pre-wrap;
+}
+
 /*
 
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
