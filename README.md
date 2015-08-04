@@ -106,36 +106,18 @@ example: {{#is A "B"}}, {{#isnot A "B"}} and or="C" option
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
 
-
 ## Dependencies
 
-#### Handlebarsjs by [wycats](https://github.com/wycats)
-
-- Handlebarsjs [Usage](https://github.com/wycats/handlebars.js)
-
-#### Handlebars Plugins by [shannonmoeller](https://github.com/shannonmoeller)
-
-- Handlebars for Gulp  [API, Options](https://github.com/shannonmoeller/gulp-hb)
-- Handlebars Registrar [API, Options](https://github.com/shannonmoeller/handlebars-registrar)
-- Handlebars Layouts [API, Helpers](https://github.com/shannonmoeller/handlebars-layouts)
-
-#### Markdown by [Helper](https://github.com/helpers/helper-markdown)
-
-- Markdown [basic, syntax](http://daringfireball.net/projects/markdown/)
-- Markdown Helper uses [remarkable](https://github.com/jonschlinkert/remarkable)
-
-#### cssnext by [Maxime Thirouin](https://github.com/MoOx)
-- cssnext. [Usage](https://github.com/cssnext/cssnext)
-- [Gulp module](https://github.com/cssnext/gulp-cssnext)
-
-#### Stylestats by [t32k](https://github.com/t32k/)
-
-- Stylestyle [Usage](https://github.com/t32k/stylestats)
-- [Gulp module](https://github.com/1000ch/gulp-stylestats) by [1000ch](https://github.com/1000ch)
-
-#### Sircus by [blivesta](https://github.com/sircus)
-- Modular CSS Family [Usage](https://github.com/sircus/sircus)
-
+- [Handlebars](https://github.com/wycats/handlebars.js) : [@wycats](https://github.com/wycats) (Yehuda Katz)
+- [gulp-hb](https://github.com/shannonmoeller/gulp-hb): [@shannonmoeller](https://github.com/shannonmoeller) (Shannon Moeller)
+- [handlebars-registrar](https://github.com/shannonmoeller/handlebars-registrar) : [@shannonmoeller](https://github.com/shannonmoeller) (Shannon Moeller)
+- [handlebars-layouts](https://github.com/shannonmoeller/handlebars-layouts) : [@shannonmoeller](https://github.com/shannonmoeller) (Shannon Moeller)
+- [helper-markdown](https://github.com/helpers/helper-markdown): [@{{helpers}}](https://github.com/helpers) (Jon Schlinkert)
+- [cssnext](https://github.com/cssnext/cssnext): [@MoOx](https://github.com/MoOx) (Maxime Thirouin)
+- [gulp-cssnext](https://github.com/cssnext/gulp-cssnext): [@MoOx](https://github.com/MoOx) (Maxime Thirouin)
+- [stylestats](https://github.com/t32k/stylestats): [@t32k](https://github.com/t32k/) (Koji Ishimoto)
+- [gulp-stylestats](https://github.com/1000ch/gulp-stylestats): [@1000ch](https://github.com/1000ch) (1000ch)
+- [sircus](https://github.com/sircus): [@blivesta](https://github.com/blivesta) (Yasuyuki Enomoto)
 
 ## Other devDependencies
 
