@@ -106,7 +106,7 @@ example: {{#is A "B"}}, {{#isnot A "B"}} and or="C" option
 
 More useful helpers [here](https://github.com/helpers) by Helper team. Some helpers have to check on compatible gulp.
 
-## Dependencies
+## devDependencies
 
 - [Handlebars](https://github.com/wycats/handlebars.js) : [@wycats](https://github.com/wycats) (Yehuda Katz)
 - [gulp-hb](https://github.com/shannonmoeller/gulp-hb): [@shannonmoeller](https://github.com/shannonmoeller) (Shannon Moeller)
