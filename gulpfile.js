@@ -59,7 +59,7 @@ gulp.task('html', function() {
         site: yaml.safeLoad(fs.readFileSync('./site.yml', 'utf8')),
         sircus: require('./src/data/sircus.json')
       },
-      helpers: './helpers.js',
+      helpers: './node_modules/site-boilerplate-helpers/index.js',
       partials: './src/partials/**/*.hbs'
     }))
     .pipe(rename(function(path) {
