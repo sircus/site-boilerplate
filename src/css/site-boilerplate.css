@@ -1,2 +1,39 @@
 @import "sircus";
+@import "./header.css";
+@import "./main.css";
+@import "./footer.css";
 @import "./highlight.css";
+
+:root {
+/* Docs ------------------------------------------- */
+  --g-fontFamily-sansEn: "Avenir Next", "Helvetica Neue", sans-serif;
+
+  --docs-color: #556b7f;
+  --docs-labels-bgcolor: #cbd5df;
+  --docs-masthead-color: #fff;
+  --docs-masthead-bgcolor: #ede5e2;
+  --docs-masthead-gradient: #205b96;
+  --docs-footer-bgcolor: #ebeef2;
+
+/* Button ------------------------------------------- */
+  --Button-transition: all 200ms ease-out;
+  --Button--pill: 5rem;
+
+  --Button-notice-fill: transparent;
+  --Button-notice-borderColor: #7bc1eb;
+  --Button-notice-color: #7bc1eb;
+  --ButtonFill-notice-color: #fff;
+  --ButtonFill-notice-bgColor: #7bc1eb;
+
+  --Button-success-fill: transparent;
+  --Button-success-borderColor: #15a780;
+  --Button-success-color: #18be91;
+  --ButtonFill-success-color: #fff;
+  --ButtonFill-success-bgColor: #18be91;
+
+  --Button-error-fill: transparent;
+  --Button-error-borderColor: #e84239;
+  --Button-error-color: #eb5850;
+  --ButtonFill-error-color: #fff;
+  --ButtonFill-error-bgColor: #eb5850;
+}
