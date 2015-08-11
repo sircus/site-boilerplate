@@ -1,17 +1,18 @@
 pre {
-  display: block;
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  display: block;
   padding: 14px;
   text-align: left;
-  background-color: #f7f7f9;
+  word-wrap: break-word;
+  word-break: break-all;
   border: 1px solid #e1e1e8;
   border-radius: 4px;
-  word-break: break-all;
-  word-wrap: break-word;
+  background-color: #f7f7f9;
 }
-pre code[class*="lang-"] {
+pre code[class*='language-'] {
   white-space: pre-wrap;
 }
+
 
 /*
 
