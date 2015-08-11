@@ -1,6 +1,37 @@
-<header class="docs-Masthead">
-  <div class="Container Container--slim">
-    <h1 class="docs-Masthead-title">{{ file.meta.title }}</h1>
-    <h2 class="docs-Masthead-lead">{{ file.meta.description }}</h2>
+<header class="docs-Header" role="banner">
+  {{#is file.meta.layout "home"}}
+  <div class="docs-masthead">
+    <div class="Container Container--slim t-gutter t-alignCenter">
+      <h1 itemprop="name">{{site.title}}</h1>
+      <h2  itemprop="description">{{site.description}}</h2>
+      <p><a href="{{site.repo_url}}" class="Button">Download on GitHub</a></p>
+      {{> include/social-buttons}}
+      <p class="H6">Author : <a href="{{site.author_url}}" target="_blank" itemprop="author">{{site.author}}</a></p>
+      <div class="docs-carbon t-center t-clear">
+      {{> include/carbon}}
+      </div>
+    </div>
   </div>
+  {{else}}
+  <div class="Container Container--slim t-gutter">
+    <nav class="docs-nav t-clear">
+      <ul>
+      <li><a class="docs-brand" href="{{file.meta.base_url}}">{{site.title}}</a></li>
+      <li><a href="{{site.repo_url}}">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="docs-masthead">
+    <div class="Container Container--slim t-gutter">
+      <h1 itemprop="name">{{file.meta.title}}</h1>
+      <h2>{{site.description}}</h2>
+      <p class="t-none" itemprop="description">{{file.meta.description}}</p>
+      <p class="t-none">Author : <a href="http://blivesta.com/" target="_blank" itemprop="author">blivesta</a></p>
+      <div class="docs-carbon t-clear">
+      {{> include/carbon}}
+      </div>
+    </div>
+  </div>
+  {{/is}}
 </header>

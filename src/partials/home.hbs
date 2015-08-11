@@ -1,10 +1,14 @@
 {{> include/head}}
 
-<body>
-  
+<body class="docs-Home">
+
 {{> include/header}}
 
-{{{block "content"}}}
+<main role="main">
+  <div class="docs-Main Container Container--slim t-gutter">
+    {{{block "content"}}}
+  </div>
+</main>
 
 {{> include/footer}}
 </body>
