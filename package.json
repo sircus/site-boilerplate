@@ -44,7 +44,7 @@
     "psi": "^1.0.6",
     "run-sequence": "^1.1.2",
     "sircus": "^1.0.0-alpha.2",
-    "site-boilerplate-helpers": "^1.0.0",
+    "site-boilerplate-helpers": "^1.0.1",
     "vinyl-source-stream":"1.1.0"
   }
 }
